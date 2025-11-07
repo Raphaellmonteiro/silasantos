@@ -1,27 +1,24 @@
-// Animações de fade ao rolar
+// Aparecer elementos ao rolar
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add("show");
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    }
   });
 });
 
-document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
+document.querySelectorAll('.fade').forEach((el) => observer.observe(el));
 
-// Mostrar e esconder o e-mail
-const btn = document.getElementById("mostrarEmail");
-const email = document.getElementById("email");
+// Mostrar e ocultar e-mail
+const botaoEmail = document.getElementById('mostrarEmail');
+const email = document.getElementById('email');
 
-btn.addEventListener("click", () => {
-  email.style.display = email.style.display === "block" ? "none" : "block";
+botaoEmail.addEventListener('click', () => {
+  if (email.style.display === 'block') {
+    email.style.display = 'none';
+    botaoEmail.textContent = 'Mostrar E-mail';
+  } else {
+    email.style.display = 'block';
+    botaoEmail.textContent = 'Ocultar E-mail';
+  }
 });
-
-// Efeito suave de rolagem ao clicar nos links
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute("href")).scrollIntoView({
-      behavior: "smooth",
-    });
-  });
-});
-
